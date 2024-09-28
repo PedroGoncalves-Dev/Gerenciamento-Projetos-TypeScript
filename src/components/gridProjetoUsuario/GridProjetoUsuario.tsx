@@ -2,10 +2,9 @@ import { useNavigate } from "react-router-dom";
 import styles from "./GridProjetoUsuario.module.css";
 import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
+import { IdadosApi } from "../../interfaces/resApi";
 
-interface Idados {
-  sucesso: boolean;
-  mensagem: string;
+interface IdadosProjeto extends IdadosApi {
   dados: string | number;
 }
 
@@ -13,26 +12,19 @@ const GridProjetoUsuario = () => {
   const navigate = useNavigate();
 
   // Função para buscar o total de projetos
-  const fetchTotalProjetos = async (): Promise<Idados> => {
-    try {
-      const res = await api.get<Idados>("/totalProjeto");
-      return res.data; // Retorna os dados diretamente
-    } catch (error) {
-      if (error instanceof Error) console.log(error.message);
-      // Retorne um valor padrão ou lançar o erro
-
-      return { sucesso: false, mensagem: "falha", dados: 0 };
-    }
+  const fetchTotalProjetos = async (): Promise<IdadosProjeto> => {
+    const res = await api.get<IdadosProjeto>("/totalProjeto");
+    return res.data;
   };
 
-  const { data, error, isLoading } = useQuery<Idados, Error>({
+  const { data, error, isLoading } = useQuery<IdadosProjeto, Error>({
     queryKey: ["totalProjeto"], // Passando a queryKey corretamente
     queryFn: fetchTotalProjetos,
     refetchOnWindowFocus: true, // Passando a função de busca
   });
 
   if (isLoading) return <div>Carregando...</div>;
-  if (error) return <div>Erro ao buscar dados</div>;
+  if (error) return <div>{error.message}</div>;
 
   // Verifique se 'data' é definido antes de acessar 'dados'
   return (

@@ -2,6 +2,8 @@ import styles from "./Projetos.module.css";
 import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import { IdadosApi } from "../../interfaces/resApi";
+import BotaoAdd from "../../components/botaoAddProjeto/BotaoAdd";
+import { useNavigate } from "react-router-dom";
 
 interface Iproeto {
   id_projeto: number;
@@ -19,6 +21,8 @@ const Projetos = () => {
     return res.data;
   };
 
+  const navigate = useNavigate();
+
   const { data, error, isLoading } = useQuery<IdadosProjeto>({
     queryKey: ["projetos"],
     queryFn: fetchProjeto,
@@ -28,12 +32,24 @@ const Projetos = () => {
   if (error) return <div>{error.message}</div>;
   return (
     <section>
-      <h2>Lista de todos os seus projetos</h2>
-      <p>gerencie seus proejtos com mais facilidade...</p>
+      <div className={styles.conteudoTop}>
+        <div className={styles.conteudoTopMeio}>
+          <h2>Lista de todos os seus projetos</h2>
+          <p>gerencie seus proejtos com mais facilidade...</p>
+        </div>
+
+        <div className={styles.conteudoTopDireita}>
+          <BotaoAdd texto="Adicionar Projeto" />
+        </div>
+      </div>
 
       <div className={styles.containerProjetos}>
         {data?.dados.map((dados) => (
-          <div key={dados.id_projeto} className={styles.cardProjeto}>
+          <div
+            key={dados.id_projeto}
+            className={styles.cardProjeto}
+            onClick={() => navigate("/detalhesProjeto")}
+          >
             <h2>{dados.nome_projeto}</h2>
             <div>
               <h2>descrição: {dados.descricao}</h2>

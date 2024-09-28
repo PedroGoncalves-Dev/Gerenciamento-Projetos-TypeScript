@@ -1,4 +1,4 @@
 export interface IdadosApi {
-  secesso: boolean;
+  sucesso: boolean;
   mensagem: string;
 }

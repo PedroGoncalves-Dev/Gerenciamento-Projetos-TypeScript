@@ -1,10 +1,27 @@
 .containerProjetos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 45%));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 49%));
   gap: 10px;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .containerProjetos .cardProjeto {
   border: 1px solid #000;
+  height: 200px;
+}
+.conteudoTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px 0px;
+}
+.conteudoTopMeio {
+  flex: 1;
+  text-align: center;
+}
+
+.conteudoTopDireita {
+  margin-left: auto;
 }
