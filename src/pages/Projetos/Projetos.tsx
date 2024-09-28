@@ -1,50 +1,47 @@
 import styles from "./Projetos.module.css";
+import { api } from "../../axios/baseUrl";
+import { useQuery } from "@tanstack/react-query";
+import { IdadosApi } from "../../interfaces/resApi";
+
+interface Iproeto {
+  id_projeto: number;
+  nome_projeto: string;
+  descricao: string;
+  to_char: string;
+}
+interface IdadosProjeto extends IdadosApi {
+  dados: Iproeto[];
+}
 
 const Projetos = () => {
+  const fetchProjeto = async () => {
+    const res = await api.get<IdadosProjeto>("/projetos");
+    return res.data;
+  };
+
+  const { data, error, isLoading } = useQuery<IdadosProjeto>({
+    queryKey: ["projetos"],
+    queryFn: fetchProjeto,
+  });
+
+  if (isLoading) return <div>Carregando...</div>;
+  if (error) return <div>{error.message}</div>;
   return (
     <section>
       <h2>Lista de todos os seus projetos</h2>
       <p>gerencie seus proejtos com mais facilidade...</p>
+
       <div className={styles.containerProjetos}>
-        <div className={styles.cardProjeto}>
-          <h2>NOme do Projeto...</h2>
-          <div>
-            <h2>Tarefas</h2>
-            <p>comentarios...</p>
+        {data?.dados.map((dados) => (
+          <div key={dados.id_projeto} className={styles.cardProjeto}>
+            <h2>{dados.nome_projeto}</h2>
+            <div>
+              <h2>descrição: {dados.descricao}</h2>
+              <p>criado em {dados.to_char}</p>
+              <p>comentarios...</p>
+            </div>
           </div>
-        </div>
-
-        <div className={styles.cardProjeto}>
-          <h2>NOme do Projeto2...</h2>
-          <div>
-            <h2>Tarefas</h2>
-            <p>comentarios...</p>
-          </div>
-        </div>
-
-        <div className={styles.cardProjeto}>
-          <h2>NOme do Projeto3...</h2>
-          <div>
-            <h2>Tarefas</h2>
-            <p>comentarios...</p>
-          </div>
-        </div>
-
-        <div className={styles.cardProjeto}>
-          <h2>NOme do Projeto4...</h2>
-          <div>
-            <h2>Tarefas</h2>
-            <p>comentarios...</p>
-          </div>
-        </div>
-
-        <div className={styles.cardProjeto}>
-          <h2>NOme do Projeto5...</h2>
-          <div>
-            <h2>Tarefas</h2>
-            <p>comentarios...</p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

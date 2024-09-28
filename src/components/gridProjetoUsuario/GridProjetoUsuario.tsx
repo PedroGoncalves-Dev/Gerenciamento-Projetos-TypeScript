@@ -6,7 +6,7 @@ import { useQuery } from "@tanstack/react-query";
 interface Idados {
   sucesso: boolean;
   mensagem: string;
-  dados: string | number; // 'dados' pode ser um número ou string
+  dados: string | number;
 }
 
 const GridProjetoUsuario = () => {
@@ -20,7 +20,8 @@ const GridProjetoUsuario = () => {
     } catch (error) {
       if (error instanceof Error) console.log(error.message);
       // Retorne um valor padrão ou lançar o erro
-      return { sucesso: false, mensagem: "Erro ao buscar dados", dados: 0 };
+
+      return { sucesso: false, mensagem: "falha", dados: 0 };
     }
   };
 
@@ -38,16 +39,16 @@ const GridProjetoUsuario = () => {
     <div className={styles.container}>
       <div className={styles.cardProjeto} onClick={() => navigate("/projetos")}>
         <h2>Projetos</h2>
+        <p>{data?.dados}</p>
         <div>
-          <p>{data?.dados}</p> {/* Use o operador de encadeamento opcional */}
           <p>Categorias...</p>
         </div>
       </div>
 
       <div className={styles.cardProjeto}>
         <h2>Usuários</h2>
+        <p>Total de usuários</p>
         <div>
-          <p>Total de usuários</p>
           <p>Categorias...</p>
         </div>
       </div>

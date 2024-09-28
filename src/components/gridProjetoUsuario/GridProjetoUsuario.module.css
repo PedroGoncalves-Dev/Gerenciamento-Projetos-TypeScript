@@ -7,4 +7,23 @@
 .cardProjeto {
   background-color: #ffff;
   cursor: pointer;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 200px;
+  box-shadow: 0px 7px 10px 5px #ccc;
+  transition: 0.1s ease;
+}
+.cardProjeto:hover {
+  transform: scale(0.985);
+}
+
+.cardProjeto h2 {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #000;
+}
+.cardProjeto p {
+  color: #f1c40f;
 }
