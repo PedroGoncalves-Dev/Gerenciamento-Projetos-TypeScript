@@ -1,0 +1,10 @@
+.containerProjetos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 45%));
+  gap: 10px;
+  justify-content: center;
+}
+
+.containerProjetos .cardProjeto {
+  border: 1px solid #000;
+}

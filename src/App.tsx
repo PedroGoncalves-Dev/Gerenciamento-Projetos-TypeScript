@@ -4,6 +4,7 @@ import NavLateral from "./components/NavLatefal/NavLateral";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
+import Projetos from "./pages/Projetos/Projetos";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/projetos" element={<Projetos />} />
           </Routes>
         </main>
       </BrowserRouter>
