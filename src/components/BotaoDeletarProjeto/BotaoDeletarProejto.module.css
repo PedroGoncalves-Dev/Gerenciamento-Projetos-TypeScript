@@ -1,0 +1,13 @@
+.botaoDeletar {
+  background: rgb(189, 15, 15);
+  font-size: 0.8rem;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: 0.2s ease;
+}
+
+.botaoDeletar:hover {
+  background-color: rgb(116, 6, 6);
+  transform: scale(1.02);
+}

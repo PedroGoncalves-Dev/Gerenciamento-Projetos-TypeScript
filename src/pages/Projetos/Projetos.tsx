@@ -3,16 +3,16 @@ import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import { IdadosApi } from "../../interfaces/resApi";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import { useState } from "react";
-import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
 
 interface Iproeto {
   id_projeto: number;
   nome_projeto: string;
   descricao: string;
   to_char: string;
+  ativo_projeto: boolean;
 }
 interface IdadosProjeto extends IdadosApi {
   dados: Iproeto[];
@@ -29,9 +29,8 @@ const Projetos = () => {
   const navigate = useNavigate();
 
   const { data, error, isLoading } = useQuery<IdadosProjeto>({
-    queryKey: ["projetos"],
+    queryKey: ["projetos", attProjeto],
     queryFn: fetchProjeto,
-    enabled: !!attProjeto,
   });
 
   if (isLoading) return <div>Carregando...</div>;
@@ -61,11 +60,10 @@ const Projetos = () => {
           >
             <h2>{dados.nome_projeto}</h2>
             <div>
-              <p>{dados.descricao}</p>
+              <h2>descrição: {dados.descricao}</h2>
               <p>criado em {dados.to_char}</p>
               <p>comentarios...</p>
             </div>
-            <Deletar texto="Excluir" funcao={() => {}} />
           </div>
         ))}
       </div>

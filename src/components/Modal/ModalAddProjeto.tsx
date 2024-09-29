@@ -40,6 +40,7 @@ const ModalAddProjeto = ({ setAttProjeto, attProjeto }: Iprops) => {
 
       setOpenModal(false);
       setAttProjeto(!attProjeto);
+
       reset();
     } catch (error) {
       console.log("erro ao cadastrar projeto", error);
@@ -83,7 +84,7 @@ const ModalAddProjeto = ({ setAttProjeto, attProjeto }: Iprops) => {
             />
           </label>
           {errors.descricao && <p>{errors.descricao.message}</p>}
-          <button type="submit">Adicioanr projeto</button>
+          <input type="submit" value={"Adicionar projeto"} />
         </form>
         <DialogFooter></DialogFooter>
       </DialogContent>

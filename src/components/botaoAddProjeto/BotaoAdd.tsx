@@ -4,7 +4,7 @@ interface Ibotao {
   texto: string;
 }
 const BotaoAdd = ({ texto }: Ibotao) => {
-  return <button className={styles.Botao}>{texto}</button>;
+  return <div className={styles.Botao}>{texto}</div>;
 };
 
 export default BotaoAdd;

@@ -25,17 +25,16 @@
 .conteudoTop {
   display: flex;
   flex-direction: row;
-  width: 65%;
+  width: 100%;
   justify-content: space-between;
-  position: relative;
-  left: 35%;
   align-items: center;
 }
 
 .conteudoTopMeio {
+  flex: 1;
   text-align: center;
 }
 
 /* .conteudoTopDireita {
-  margin-left: auto;
+  justify-content: flex-end;
 } */
