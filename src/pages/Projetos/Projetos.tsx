@@ -2,8 +2,9 @@ import styles from "./Projetos.module.css";
 import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import { IdadosApi } from "../../interfaces/resApi";
-import BotaoAdd from "../../components/botaoAddProjeto/BotaoAdd";
+
 import { useNavigate } from "react-router-dom";
+import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 
 interface Iproeto {
   id_projeto: number;
@@ -39,7 +40,7 @@ const Projetos = () => {
         </div>
 
         <div className={styles.conteudoTopDireita}>
-          <BotaoAdd texto="Adicionar Projeto" />
+          <ModalAddProjeto />
         </div>
       </div>
 

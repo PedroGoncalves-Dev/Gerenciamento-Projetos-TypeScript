@@ -1,0 +1,16 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.form label {
+  display: flex;
+  flex-direction: column;
+}
+.form label input {
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  margin: 10px 0;
+}
+.form label textarea {
+  border: 1px solid #ccc;
+}
