@@ -9,7 +9,6 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogFooter,
-  DialogClose,
 } from "../ui/dialog";
 
 import BotaoAdd from "../botaoAddProjeto/BotaoAdd";
@@ -20,8 +19,12 @@ interface Idados {
   nome_projeto: string;
   descricao: string;
 }
+interface Iprops {
+  setAttProjeto: React.Dispatch<React.SetStateAction<boolean>>;
+  attProjeto: boolean;
+}
 
-const ModalAddProjeto = () => {
+const ModalAddProjeto = ({ setAttProjeto, attProjeto }: Iprops) => {
   const [openModal, setOpenModal] = useState(false);
 
   const {
@@ -34,9 +37,10 @@ const ModalAddProjeto = () => {
   const onSubmit: SubmitHandler<Idados> = async (data: Idados) => {
     try {
       await api.post("/cadastrarProjeto", data);
-      reset();
 
       setOpenModal(false);
+      setAttProjeto(!attProjeto);
+      reset();
     } catch (error) {
       console.log("erro ao cadastrar projeto", error);
     }

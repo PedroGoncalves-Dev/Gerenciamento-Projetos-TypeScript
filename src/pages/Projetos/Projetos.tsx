@@ -5,6 +5,7 @@ import { IdadosApi } from "../../interfaces/resApi";
 
 import { useNavigate } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
+import { useState } from "react";
 
 interface Iproeto {
   id_projeto: number;
@@ -17,6 +18,8 @@ interface IdadosProjeto extends IdadosApi {
 }
 
 const Projetos = () => {
+  const [attProjeto, setAttProjeto] = useState(false);
+
   const fetchProjeto = async () => {
     const res = await api.get<IdadosProjeto>("/projetos");
     return res.data;
@@ -27,6 +30,7 @@ const Projetos = () => {
   const { data, error, isLoading } = useQuery<IdadosProjeto>({
     queryKey: ["projetos"],
     queryFn: fetchProjeto,
+    enabled: !!attProjeto,
   });
 
   if (isLoading) return <div>Carregando...</div>;
@@ -40,7 +44,10 @@ const Projetos = () => {
         </div>
 
         <div className={styles.conteudoTopDireita}>
-          <ModalAddProjeto />
+          <ModalAddProjeto
+            setAttProjeto={setAttProjeto}
+            attProjeto={attProjeto}
+          />
         </div>
       </div>
 
