@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import { useState } from "react";
 import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
+import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesEstatos";
 
 interface Iproeto {
   id_projeto: number;
@@ -52,6 +53,8 @@ const Projetos = () => {
   return (
     <section>
       <div className={styles.conteudoTop}>
+        <BotoesStatus />
+
         <div className={styles.conteudoTopMeio}>
           <h2>Lista de todos os seus projetos</h2>
           <p>gerencie seus proejtos com mais facilidade...</p>

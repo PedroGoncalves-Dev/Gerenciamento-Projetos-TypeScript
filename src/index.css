@@ -9,6 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
   min-width: 100%;
   min-height: 100%;
+
+  --cor-vermelha: rgb(189, 15, 15);
 }
 .app {
   display: flex;

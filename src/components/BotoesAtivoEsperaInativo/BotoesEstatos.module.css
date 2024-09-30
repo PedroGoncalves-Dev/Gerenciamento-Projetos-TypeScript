@@ -1,0 +1,23 @@
+.container {
+  border-bottom: #ccc 2px solid;
+}
+.container button {
+  border-radius: 5px;
+  width: 90px;
+  margin-bottom: 4px;
+}
+.ativos {
+  background-color: blue;
+  color: #fff;
+}
+
+.pausados {
+  background-color: green;
+  color: #fff;
+  margin: 0 5px;
+}
+
+.inativos {
+  background-color: var(--cor-vermelha);
+  color: #fff;
+}
