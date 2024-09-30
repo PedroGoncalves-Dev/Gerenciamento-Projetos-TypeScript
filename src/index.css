@@ -11,6 +11,7 @@
   min-height: 100%;
 
   --cor-vermelha: rgb(189, 15, 15);
+  --cor-black: #1f1f1f;
 }
 .app {
   display: flex;
