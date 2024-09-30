@@ -5,19 +5,18 @@
   border-radius: 5px;
   width: 90px;
   margin-bottom: 4px;
+  color: #fff;
 }
 .ativos {
-  background-color: blue;
-  color: #fff;
+  background-color: #00bfff;
 }
 
 .pausados {
-  background-color: green;
-  color: #fff;
+  background-color: #32cd32;
+
   margin: 0 5px;
 }
 
 .inativos {
-  background-color: var(--cor-vermelha);
-  color: #fff;
+  background-color: #ff4500;
 }

@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import { useState } from "react";
 import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
-import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesEstatos";
+import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesStatus";
 
 interface Iproeto {
   id_projeto: number;

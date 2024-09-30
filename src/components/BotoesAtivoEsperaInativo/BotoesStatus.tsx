@@ -1,4 +1,4 @@
-import styles from "./BotoesEstatos.module.css";
+import styles from "./BotoesStatus.module.css";
 
 const BotoesStatus = () => {
   return (
