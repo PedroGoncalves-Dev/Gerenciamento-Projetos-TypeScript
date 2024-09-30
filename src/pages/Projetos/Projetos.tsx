@@ -9,28 +9,12 @@ import { useState } from "react";
 import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
 import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesStatus";
 
-interface Iproeto {
-  id_projeto: number;
-  nome_projeto: string;
-  descricao: string;
-  to_char: string;
-  ativo_projeto: boolean;
-}
-interface IdadosProjeto extends IdadosApi {
-  dados: Iproeto[];
-}
-
 interface Iinativar {
   id_projeto: number;
 }
 
 const Projetos = () => {
   const [attProjeto, setAttProjeto] = useState(false);
-
-  const fetchProjeto = async () => {
-    const res = await api.get<IdadosProjeto>("/projetos");
-    return res.data;
-  };
 
   //inativar projeot
   const inativarProjeto = async ({ id_projeto }: Iinativar) => {
@@ -43,13 +27,6 @@ const Projetos = () => {
 
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useQuery<IdadosProjeto>({
-    queryKey: ["projetos", attProjeto],
-    queryFn: fetchProjeto,
-  });
-
-  if (isLoading) return <div>Carregando...</div>;
-  if (error) return <div>{error.message}</div>;
   return (
     <section>
       <div className={styles.conteudoTop}>
@@ -68,26 +45,7 @@ const Projetos = () => {
         </div>
       </div>
 
-      <div className={styles.containerProjetos}>
-        {data?.dados.map((dados) => (
-          <div
-            key={dados.id_projeto}
-            className={styles.cardProjeto}
-            onClick={() => navigate("/detalhesProjeto")}
-          >
-            <h2>{dados.nome_projeto}</h2>
-            <div>
-              <h2>descrição: {dados.descricao}</h2>
-              <p>criado em {dados.to_char}</p>
-              <p>comentarios...</p>
-            </div>
-            <Deletar
-              texto="Apagar projeto"
-              funcao={() => inativarProjeto({ id_projeto: dados.id_projeto })}
-            />
-          </div>
-        ))}
-      </div>
+      <div className={styles.containerProjetos}></div>
     </section>
   );
 };
