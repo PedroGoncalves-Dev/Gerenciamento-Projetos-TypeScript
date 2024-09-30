@@ -3,9 +3,10 @@ import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import { IdadosApi } from "../../interfaces/resApi";
 
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import { useState } from "react";
+import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
 
 interface Iproeto {
   id_projeto: number;
@@ -18,12 +19,25 @@ interface IdadosProjeto extends IdadosApi {
   dados: Iproeto[];
 }
 
+interface Iinativar {
+  id_projeto: number;
+}
+
 const Projetos = () => {
   const [attProjeto, setAttProjeto] = useState(false);
 
   const fetchProjeto = async () => {
     const res = await api.get<IdadosProjeto>("/projetos");
     return res.data;
+  };
+
+  //inativar projeot
+  const inativarProjeto = async ({ id_projeto }: Iinativar) => {
+    try {
+      await api.patch(`/inativarProjeto/${id_projeto}`);
+    } catch (error) {
+      return console.log(error);
+    }
   };
 
   const navigate = useNavigate();
@@ -64,6 +78,10 @@ const Projetos = () => {
               <p>criado em {dados.to_char}</p>
               <p>comentarios...</p>
             </div>
+            <Deletar
+              texto="Apagar projeto"
+              funcao={() => inativarProjeto({ id_projeto: dados.id_projeto })}
+            />
           </div>
         ))}
       </div>
