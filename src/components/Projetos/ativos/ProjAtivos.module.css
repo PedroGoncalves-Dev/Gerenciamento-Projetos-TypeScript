@@ -1,0 +1,22 @@
+.cardProjeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border: 1px solid #000;
+  min-height: 200px;
+  height: auto;
+}
+
+.cardProjeto h2 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  flex-wrap: nowrap;
+}
+
+.cabecalho {
+  height: 50px;
+
+  width: 100%;
+}

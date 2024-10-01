@@ -12,6 +12,7 @@
 
   --cor-vermelha: rgb(189, 15, 15);
   --cor-black: #1f1f1f;
+  --cor-azulClarinho: #00bfff;
 }
 .app {
   display: flex;
