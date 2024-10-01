@@ -47,7 +47,7 @@ const Projetos = () => {
       <div className={styles.containerProjetos}>
         <ProjetosAtivos
           attProjeto={attProjeto}
-          inativarProjeto={() => inativarProjeto}
+          inativarProjeto={inativarProjeto}
         />
       </div>
     </section>

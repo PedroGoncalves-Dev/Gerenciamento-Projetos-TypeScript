@@ -1,3 +1,5 @@
+import { Interface } from "readline";
+
 //dados da api de projetos
 export interface IdadosApi {
   sucesso: boolean;
@@ -11,4 +13,17 @@ export interface Iproeto {
   descricao: string;
   to_char: string;
   status_projeto: boolean;
+}
+
+//tarefa
+export interface IdadosT {
+  sucesso: boolean;
+  mensagem: string;
+  dados: Itarefa[];
+}
+export interface Itarefa {
+  id_tarefa: number;
+  tarefa: string;
+  comentario_tarefa: string;
+  username_USU: string;
 }

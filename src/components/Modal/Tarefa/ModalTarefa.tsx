@@ -3,22 +3,47 @@ import {
   DialogContent,
   DialogDescription,
   DialogHeader,
+  DialogTitle,
+  DialogTrigger,
 } from "@/components/ui/dialog";
 import styles from "./ModalTarefa.module.css";
-import { DialogTitle, DialogTrigger } from "@radix-ui/react-dialog";
-import { SetStateAction } from "react";
+import { api } from "@/axios/baseUrl";
+import { IdadosT } from "@/interfaces/resApi";
+import { useQuery } from "@tanstack/react-query";
 
-const ModalTarefa = () => {
+interface Iprops {
+  id_projeto: number;
+}
+
+const ModalTarefa = ({ id_projeto }: Iprops) => {
+  const urlTarefa = `/tarefas/${id_projeto}`;
+
+  const fetchTarefa = async () => {
+    const res = await api.get<IdadosT>(urlTarefa);
+    return console.log(id_projeto), res.data;
+  };
+
+  const {
+    data: projeto,
+    error,
+    isLoading,
+  } = useQuery<IdadosT>({
+    queryKey: ["tarefa", id_projeto],
+    queryFn: fetchTarefa,
+  });
+
+  if (error) return <div>'erro</div>;
+  if (isLoading) return <div>'carregando'</div>;
+
   return (
     <ul>
       <Dialog>
-        <DialogTrigger className={styles.trigger}>
-          <li>Tarefa 1</li>
-        </DialogTrigger>
+        {projeto?.dados.map((dados) => (
+          <DialogTrigger className={styles.trigger} key={dados.id_tarefa}>
+            <li>{dados.tarefa}</li>
+          </DialogTrigger>
+        ))}
 
-        <DialogTrigger className={styles.trigger}>
-          <li>Tarefa 1</li>
-        </DialogTrigger>
         <DialogContent>
           <DialogHeader>
             <DialogTitle>Informações da tarefa</DialogTitle>

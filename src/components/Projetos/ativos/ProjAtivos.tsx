@@ -23,6 +23,7 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
   // req projeto
   const fetchProjeto = async () => {
     const res = await api.get<IdadosApi>("/projetos");
+
     return res.data;
   };
 
@@ -45,7 +46,7 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
           ></div>
           <h2>{dados.nome_projeto}</h2>
 
-          <ModalTarefa />
+          <ModalTarefa id_projeto={dados.id_projeto} />
 
           <Deletar
             texto="Excluir"
