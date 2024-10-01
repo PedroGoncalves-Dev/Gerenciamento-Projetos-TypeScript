@@ -6,6 +6,8 @@ import { IdadosApi } from "@/interfaces/resApi";
 import { api } from "@/axios/baseUrl";
 import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
+import ModalTarefa from "@/components/Modal/Tarefa/ModalTarefa";
+import { useState } from "react";
 
 interface IpropsFuncao {
   id_projeto: number;
@@ -16,6 +18,9 @@ interface Iprops {
 }
 
 const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
+  const [modalTarefa, setModalTarefa] = useState(false);
+
+  // req projeto
   const fetchProjeto = async () => {
     const res = await api.get<IdadosApi>("/projetos");
     return res.data;
@@ -33,16 +38,15 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
         <div
           key={dados.id_projeto}
           className={styles.cardProjeto}
-          onClick={() => navigate("/detalhesProjeto")}
+          // onClick={() => navigate("/detalhesProjeto")}
         >
           <div
             className={classNames(styles.cabecalho, "shapedividers_com-9066")}
           ></div>
           <h2>{dados.nome_projeto}</h2>
-          <ol>
-            <li>Tarefa 1</li>
-            <li>Tarefa 2</li>
-          </ol>
+
+          <ModalTarefa />
+
           <Deletar
             texto="Excluir"
             funcao={() => inativarProjeto({ id_projeto: dados.id_projeto })}

@@ -18,22 +18,28 @@
   flex-wrap: nowrap;
 }
 
-.cardProjeto ol {
+.cardProjeto ul {
   background: #ccc;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 80%;
   border-radius: 10px;
 }
 
-.cardProjeto ol li {
+.cardProjeto ul li {
   background-color: #ffffffe3;
   color: #bbbbbb;
-  margin: 10px 10px;
+  width: 100%;
   border-radius: 10px;
+
   line-height: 30px;
   transition: 0.2s ease;
+  cursor: pointer;
 }
 
-.cardProjeto ol li:hover {
+.cardProjeto ul li:hover {
   outline: auto var(--cor-azulClarinho);
 }
 
