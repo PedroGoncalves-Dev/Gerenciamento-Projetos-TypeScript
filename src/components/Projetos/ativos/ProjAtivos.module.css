@@ -2,11 +2,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   text-align: center;
-  border: 1px solid #000;
+  background-color: #f3f2f2;
+  border-radius: 10px 10px;
   min-height: 200px;
   height: auto;
+  padding-bottom: 20px;
+  box-shadow: 0 5px 10px 2px #ccc;
 }
 
 .cardProjeto h2 {
@@ -17,6 +20,5 @@
 
 .cabecalho {
   height: 50px;
-
   width: 100%;
 }

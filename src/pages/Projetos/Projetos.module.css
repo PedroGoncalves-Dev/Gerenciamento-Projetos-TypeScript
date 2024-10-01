@@ -1,27 +1,11 @@
 .containerProjetos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 49%));
-  gap: 10px;
+  gap: 20px;
   justify-content: space-between;
   align-items: center;
 }
 
-.containerProjetos .cardProjeto {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border: 1px solid #000;
-  min-height: 200px;
-  height: auto;
-}
-
-.cardProjeto h2 {
-  font-size: 1.3rem;
-  font-weight: bold;
-  flex-wrap: nowrap;
-}
 .conteudoTop {
   display: flex;
   flex-direction: row;

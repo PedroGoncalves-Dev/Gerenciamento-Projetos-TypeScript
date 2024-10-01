@@ -27,7 +27,7 @@ const Projetos = () => {
   };
 
   return (
-    <section className="shapedividers_com-749">
+    <section>
       <div className={styles.conteudoTop}>
         <BotoesStatus />
 
