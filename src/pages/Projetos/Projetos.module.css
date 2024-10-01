@@ -1,9 +1,8 @@
 .containerProjetos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 49%));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 29%));
   gap: 20px;
   justify-content: space-between;
-  align-items: center;
 }
 
 .conteudoTop {

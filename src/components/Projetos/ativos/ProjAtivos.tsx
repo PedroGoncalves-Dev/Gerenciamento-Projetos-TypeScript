@@ -39,13 +39,12 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
             className={classNames(styles.cabecalho, "shapedividers_com-9066")}
           ></div>
           <h2>{dados.nome_projeto}</h2>
-          <div>
-            <h2>descrição: {dados.descricao}</h2>
-            <p>criado em {dados.to_char}</p>
-            <p>comentarios...</p>
-          </div>
+          <ol>
+            <li>Tarefa 1</li>
+            <li>Tarefa 2</li>
+          </ol>
           <Deletar
-            texto="Apagar projeto"
+            texto="Excluir"
             funcao={() => inativarProjeto({ id_projeto: dados.id_projeto })}
           />
         </div>

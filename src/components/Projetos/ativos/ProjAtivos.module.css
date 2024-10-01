@@ -4,10 +4,10 @@
   align-items: center;
   justify-content: space-between;
   text-align: center;
-  background-color: #f3f2f2;
+  background-color: #f3f2f275;
   border-radius: 10px 10px;
   min-height: 200px;
-  height: auto;
+
   padding-bottom: 20px;
   box-shadow: 0 5px 10px 2px #ccc;
 }
@@ -16,6 +16,25 @@
   font-size: 1.3rem;
   font-weight: bold;
   flex-wrap: nowrap;
+}
+
+.cardProjeto ol {
+  background: #ccc;
+  width: 80%;
+  border-radius: 10px;
+}
+
+.cardProjeto ol li {
+  background-color: #ffffffe3;
+  color: #bbbbbb;
+  margin: 10px 10px;
+  border-radius: 10px;
+  line-height: 30px;
+  transition: 0.2s ease;
+}
+
+.cardProjeto ol li:hover {
+  outline: auto var(--cor-azulClarinho);
 }
 
 .cabecalho {
