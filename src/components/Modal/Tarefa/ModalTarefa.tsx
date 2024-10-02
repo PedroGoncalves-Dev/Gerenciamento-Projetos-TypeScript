@@ -67,7 +67,7 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
   if (error) return <div>'erro</div>;
   if (isLoading) return <div>'carregando'</div>;
 
-  if (erroDetalhesTarefa) return <p>Tarefas não econstradas</p>;
+  // if (erroDetalhesTarefa) return <p>Tarefas não econstradas</p>;
   if (loadingDetalhesTarefa) return <p>carregando...</p>;
 
   return (
