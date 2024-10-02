@@ -9,6 +9,7 @@
   gap: 20px;
   justify-content: space-around;
   background-color: #f5f5f5;
+  border-radius: 10px;
   box-shadow: 0px 5px 8px 2px #ccc;
   padding: 20px 0;
 }
@@ -16,8 +17,22 @@
 .containerDetalhes div {
   background-color: #fff;
   border: 1px solid #ccc;
+  border-radius: 10px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+}
+.addNovaTarefa {
+  width: 80% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  line-height: 30px;
+  text-wrap: nowrap;
+
+  margin: 20px 0;
+  text-align: center;
 }

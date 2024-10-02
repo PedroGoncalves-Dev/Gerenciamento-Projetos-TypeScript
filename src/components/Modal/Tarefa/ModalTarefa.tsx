@@ -12,6 +12,7 @@ import { IdadosT } from "@/interfaces/resApi";
 import { IrespostaApi } from "@/interfaces/resApi";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import { MdAddCircleOutline } from "react-icons/md";
 
 interface Iprops {
   id_projeto: number;
@@ -62,6 +63,7 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
   } = useQuery<IdetalhesTarefa>({
     queryKey: ["detalhesTarefa", id],
     queryFn: fetchDetalhesTarefa,
+    refetchOnWindowFocus: false,
   });
 
   if (error) return <div>'erro</div>;
@@ -71,42 +73,48 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
   if (loadingDetalhesTarefa) return <p>carregando...</p>;
 
   return (
-    <ul>
-      <Dialog>
+    <Dialog>
+      <ul>
         {projeto?.dados.map((dados) => (
-          <DialogTrigger className={styles.trigger} key={dados.id_tarefa}>
-            <li onClick={() => setId(dados.id_tarefa)}>{dados.tarefa}</li>
+          <DialogTrigger
+            className={styles.trigger}
+            key={dados.id_tarefa}
+            onMouseEnter={() => setId(dados.id_tarefa)}
+          >
+            <li>{dados.tarefa}</li>
           </DialogTrigger>
         ))}
-        <DialogContent>
-          <DialogHeader>
-            <DialogTitle className="text-center">
-              Informações da tarefa
-            </DialogTitle>
-            <DialogDescription className="text-center">
-              Testando
-            </DialogDescription>
-          </DialogHeader>
-          {tarefaDetalhes?.dados.map((detalhes) => (
-            <div key={detalhes.id_tarefa} className={styles.containerDetalhes}>
-              <div>
-                <h2>{detalhes.tarefa}</h2>
-                <p>{detalhes.comentario_tarefa}</p>
-              </div>
-
-              <div>
-                <h2>Usuario</h2>
-                <ul>
-                  <li>{detalhes.username_usu}</li>
-                  <li>email do usu</li>
-                  <li>data da tarefa</li>
-                </ul>
-              </div>
+        <li className={styles.addNovaTarefa}>
+          Nova tarefa <MdAddCircleOutline />
+        </li>
+      </ul>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle className="text-center">
+            Informações da tarefa
+          </DialogTitle>
+          <DialogDescription className="text-center">
+            Testando
+          </DialogDescription>
+        </DialogHeader>
+        {tarefaDetalhes?.dados.map((detalhes) => (
+          <div key={detalhes.id_tarefa} className={styles.containerDetalhes}>
+            <div>
+              <h2>{detalhes.tarefa}</h2>
+              <p>{detalhes.comentario_tarefa}</p>
             </div>
-          ))}
-        </DialogContent>
-      </Dialog>
-    </ul>
+
+            <div>
+              <ul>
+                <li>{detalhes.username_usu}</li>
+                <li>email do usu</li>
+                <li>data da tarefa</li>
+              </ul>
+            </div>
+          </div>
+        ))}
+      </DialogContent>
+    </Dialog>
   );
 };
 

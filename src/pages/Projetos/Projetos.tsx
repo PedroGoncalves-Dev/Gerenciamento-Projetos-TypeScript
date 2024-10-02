@@ -32,8 +32,7 @@ const Projetos = () => {
         <BotoesStatus />
 
         <div className={styles.conteudoTopMeio}>
-          <h2>Lista de todos os seus projetos</h2>
-          <p>gerencie seus proejtos com mais facilidade...</p>
+          <h2>Projetos</h2>
         </div>
 
         <div className={styles.conteudoTopDireita}>
