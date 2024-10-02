@@ -2,14 +2,30 @@ import { useNavigate } from "react-router-dom";
 import styles from "./GridProjetoUsuario.module.css";
 import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
-import { IdadosApi } from "../../interfaces/resApi";
+import { IrespostaApi } from "@/interfaces/resApi";
+import { useState, useEffect, SetStateAction } from "react";
 
-interface IdadosProjeto extends IdadosApi {
+interface IdadosProjeto extends IrespostaApi {
   dados: string | number;
 }
 
 const GridProjetoUsuario = () => {
   const navigate = useNavigate();
+
+  const [numeroFinal, setNumeroFinal] = useState(100);
+  const [contador, setContador] = useState(0);
+
+  useEffect(() => {
+    let intervalo = setInterval(() => {
+      if (contador < numeroFinal) {
+        setContador(contador + 1);
+      } else {
+        clearInterval(intervalo);
+      }
+    }, 50);
+
+    return () => clearInterval(intervalo);
+  }, [contador, numeroFinal]);
 
   // Função para buscar o total de projetos
   const fetchTotalProjetos = async (): Promise<IdadosProjeto> => {
@@ -21,6 +37,10 @@ const GridProjetoUsuario = () => {
     queryKey: ["totalProjeto"], // Passando a queryKey corretamente
     queryFn: fetchTotalProjetos,
     refetchOnWindowFocus: true, // Passando a função de busca
+    // select: (data) => {
+    //   setNumeroFinal(data.dados);
+    //   return data;
+    // },
   });
 
   if (isLoading) return <div>Carregando...</div>;
@@ -33,7 +53,7 @@ const GridProjetoUsuario = () => {
         <h2>Projetos</h2>
         <p>{data?.dados}</p>
         <div>
-          <p>Categorias...</p>
+          <p>{contador}...</p>
         </div>
       </div>
 
