@@ -27,3 +27,8 @@ export interface Itarefa {
   comentario_tarefa: string;
   username_USU: string;
 }
+
+export interface IrespostaApi {
+  sucesso: boolean;
+  mensagem: string;
+}
