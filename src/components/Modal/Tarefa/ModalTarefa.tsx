@@ -74,12 +74,8 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
     <ul>
       <Dialog>
         {projeto?.dados.map((dados) => (
-          <DialogTrigger
-            className={styles.trigger}
-            key={dados.id_tarefa}
-            onClick={() => setId(dados.id_tarefa)}
-          >
-            <li>{dados.tarefa}</li>
+          <DialogTrigger className={styles.trigger} key={dados.id_tarefa}>
+            <li onClick={() => setId(dados.id_tarefa)}>{dados.tarefa}</li>
           </DialogTrigger>
         ))}
         <DialogContent>
