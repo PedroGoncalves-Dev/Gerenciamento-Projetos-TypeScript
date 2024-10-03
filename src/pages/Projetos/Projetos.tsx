@@ -9,6 +9,7 @@ import { useState } from "react";
 import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
 import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesStatus";
 import ProjetosAtivos from "@/components/Projetos/ativos/ProjAtivos";
+import ModalAddTarefa from "@/components/Modal/AddTarefa/ModalAddTarefa";
 
 interface Iinativar {
   id_projeto: number;

@@ -46,7 +46,7 @@ const GridProjetoUsuario = () => {
   if (isLoading) return <div>Carregando...</div>;
   if (error) return <div>{error.message}</div>;
 
-  // Verifique se 'data' é definido antes de acessar 'dados'
+
   return (
     <div className={styles.container}>
       <div className={styles.cardProjeto} onClick={() => navigate("/projetos")}>

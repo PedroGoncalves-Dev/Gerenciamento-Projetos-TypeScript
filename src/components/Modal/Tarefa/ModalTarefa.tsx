@@ -12,7 +12,6 @@ import { IdadosT } from "@/interfaces/resApi";
 import { IrespostaApi } from "@/interfaces/resApi";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { MdAddCircleOutline } from "react-icons/md";
 
 interface Iprops {
   id_projeto: number;
@@ -74,20 +73,16 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
 
   return (
     <Dialog>
-      <ul>
-        {projeto?.dados.map((dados) => (
-          <DialogTrigger
-            className={styles.trigger}
-            key={dados.id_tarefa}
-            onMouseEnter={() => setId(dados.id_tarefa)}
-          >
-            <li>{dados.tarefa}</li>
-          </DialogTrigger>
-        ))}
-        <li className={styles.addNovaTarefa}>
-          Nova tarefa <MdAddCircleOutline />
-        </li>
-      </ul>
+      {projeto?.dados.map((dados) => (
+        <DialogTrigger
+          className={styles.trigger}
+          key={dados.id_tarefa}
+          onMouseEnter={() => setId(dados.id_tarefa)}
+        >
+          <li>{dados.tarefa}</li>
+        </DialogTrigger>
+      ))}
+
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="text-center">

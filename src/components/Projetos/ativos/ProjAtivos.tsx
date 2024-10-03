@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import ModalTarefa from "@/components/Modal/Tarefa/ModalTarefa";
 import { useState } from "react";
+import ModalAddTarefa from "@/components/Modal/AddTarefa/ModalAddTarefa";
 
 interface IpropsFuncao {
   id_projeto: number;
@@ -45,9 +46,10 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
             className={classNames(styles.cabecalho, "shapedividers_com-9066")}
           ></div>
           <h2>{dados.nome_projeto}</h2>
-
-          <ModalTarefa id_projeto={dados.id_projeto} />
-
+          <ul>
+            <ModalTarefa id_projeto={dados.id_projeto} />
+            <ModalAddTarefa />
+          </ul>
           <Deletar
             texto="Excluir"
             funcao={() => inativarProjeto({ id_projeto: dados.id_projeto })}

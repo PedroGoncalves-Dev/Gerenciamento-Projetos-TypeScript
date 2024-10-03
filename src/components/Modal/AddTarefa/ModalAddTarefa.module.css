@@ -1,0 +1,13 @@
+.addNovaTarefa {
+  width: 80% !important;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+
+  line-height: 30px;
+  text-wrap: nowrap;
+
+  margin: 20px 0;
+  text-align: center;
+}
