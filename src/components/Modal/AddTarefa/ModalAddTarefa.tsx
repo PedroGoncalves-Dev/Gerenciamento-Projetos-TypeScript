@@ -11,10 +11,22 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { useForm } from "react-hook-form";
 
 import { MdAddCircleOutline } from "react-icons/md";
 
-const ModalAddTarefa = () => {
+interface Iprops {
+  id_projeto: number;
+}
+const ModalAddTarefa = ({ id_projeto }: Iprops) => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = () => {};
   return (
     <Dialog>
       <DialogTrigger>
@@ -30,10 +42,23 @@ const ModalAddTarefa = () => {
             Cria uma nova tarefa para o projeto...
           </DialogDescription>
         </DialogHeader>
-        <h2>testando...</h2>
+        <form>
+          <label>
+            <span>Tarefa:</span>
+            <input type="text" placeholder="Digite a nova tarefa..." />
+          </label>
+
+          <label>
+            <span>Comentario:</span>
+            {/* <textarea
+              placeholder="Explique melhor a tarefa..."
+              {...register("")}
+            /> */}
+          </label>
+        </form>
 
         <DialogFooter>
-          <DialogClose>
+          <DialogClose asChild>
             <Button>Fechar</Button>
           </DialogClose>
         </DialogFooter>

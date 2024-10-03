@@ -45,14 +45,20 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
   } = useQuery<IdadosT>({
     queryKey: ["tarefa", id_projeto],
     queryFn: fetchTarefa,
+    retry: 19,
   });
 
   //detalhes tarefa
-  const fetchDetalhesTarefa = async () => {
-    const res = await api.get<IdetalhesTarefa>(
-      `http://localhost:3000/detalhesTarefa/${id}`
-    );
-    return res.data;
+
+  const fetchDetalhesTarefa = async (): Promise<IdetalhesTarefa> => {
+    if (id) {
+      const res = await api.get<IdetalhesTarefa>(
+        `http://localhost:3000/detalhesTarefa/${id}`
+      );
+      return res.data;
+    } else {
+      throw new Error("Falha de id");
+    }
   };
 
   const {
@@ -68,7 +74,6 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
   if (error) return <div>'erro</div>;
   if (isLoading) return <div>'carregando'</div>;
 
-  // if (erroDetalhesTarefa) return <p>Tarefas não econstradas</p>;
   if (loadingDetalhesTarefa) return <p>carregando...</p>;
 
   return (

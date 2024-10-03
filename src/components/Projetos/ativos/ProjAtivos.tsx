@@ -48,7 +48,7 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
           <h2>{dados.nome_projeto}</h2>
           <ul>
             <ModalTarefa id_projeto={dados.id_projeto} />
-            <ModalAddTarefa />
+            <ModalAddTarefa id_projeto={dados.id_projeto} />
           </ul>
           <Deletar
             texto="Excluir"
