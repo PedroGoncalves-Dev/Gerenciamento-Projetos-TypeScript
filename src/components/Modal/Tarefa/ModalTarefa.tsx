@@ -29,7 +29,7 @@ interface IdetalhesTarefa extends IrespostaApi {
 }
 
 const ModalTarefa = ({ id_projeto }: Iprops) => {
-  const [id, setId] = useState<number>();
+  const [id, setId] = useState<number | undefined>(undefined);
 
   const urlTarefa = `/tarefas/${id_projeto}`;
 
@@ -73,8 +73,6 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
 
   if (error) return <div>'erro</div>;
   if (isLoading) return <div>'carregando'</div>;
-
-  if (loadingDetalhesTarefa) return <p>carregando...</p>;
 
   return (
     <Dialog>
