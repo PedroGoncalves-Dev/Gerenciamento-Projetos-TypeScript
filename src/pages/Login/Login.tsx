@@ -1,4 +1,5 @@
 import styles from "./Login.module.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -14,6 +15,11 @@ const Login = () => {
       </label>
 
       <button type="submit">Login</button>
+
+      <div className={styles.links}>
+        <Link to={"/"}>Esqueceu a senha ?</Link>
+        <Link to={"/"}>Cadastrar nova conta</Link>
+      </div>
     </form>
   );
 };
