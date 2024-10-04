@@ -11,22 +11,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useForm } from "react-hook-form";
 
 import { MdAddCircleOutline } from "react-icons/md";
 
-interface Iprops {
-  id_projeto: number;
-}
-const ModalAddTarefa = ({ id_projeto }: Iprops) => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm();
-
-  const onSubmit = () => {};
+// interface Iprops {
+//   id_projeto: number;
+// }
+const ModalAddTarefa = () => {
   return (
     <Dialog>
       <DialogTrigger>

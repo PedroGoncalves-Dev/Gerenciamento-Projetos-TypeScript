@@ -4,11 +4,11 @@ import "./ProjetoAtivos.css";
 import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
 import { IdadosApi } from "@/interfaces/resApi";
 import { api } from "@/axios/baseUrl";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import classNames from "classnames";
 import ModalTarefa from "@/components/Modal/Tarefa/ModalTarefa";
-import { useState } from "react";
-import ModalAddTarefa from "@/components/Modal/AddTarefa/ModalAddTarefa";
+// import { useState } from "react";
+// import ModalAddTarefa from "@/components/Modal/AddTarefa/ModalAddTarefa";
 
 interface IpropsFuncao {
   id_projeto: number;
@@ -19,7 +19,7 @@ interface Iprops {
 }
 
 const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
-  const [modalTarefa, setModalTarefa] = useState(false);
+  // const [modalTarefa, setModalTarefa] = useState(false);
 
   // req projeto
   const fetchProjeto = async () => {
@@ -28,12 +28,11 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
     return res.data;
   };
 
-  const { data, error, isLoading } = useQuery<IdadosApi>({
+  const { data } = useQuery<IdadosApi>({
     queryKey: ["projetosAtivos", attProjeto],
     queryFn: fetchProjeto,
   });
 
-  const navigate = useNavigate();
   return (
     <>
       {data?.dados.map((dados) => (
@@ -48,7 +47,7 @@ const ProjetosAtivos = ({ attProjeto, inativarProjeto }: Iprops) => {
           <h2>{dados.nome_projeto}</h2>
           <ul>
             <ModalTarefa id_projeto={dados.id_projeto} />
-            <ModalAddTarefa id_projeto={dados.id_projeto} />
+            {/* <ModalAddTarefa id_projeto={dados.id_projeto} /> */}
           </ul>
           <Deletar
             texto="Excluir"

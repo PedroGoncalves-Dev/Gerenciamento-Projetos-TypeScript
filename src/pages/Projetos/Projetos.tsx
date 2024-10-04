@@ -1,15 +1,11 @@
 import styles from "./Projetos.module.css";
 import { api } from "../../axios/baseUrl";
-import { useQuery } from "@tanstack/react-query";
-import { IdadosApi } from "../../interfaces/resApi";
 
-import { useNavigate } from "react-router-dom";
 import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import { useState } from "react";
-import Deletar from "@/components/BotaoDeletarProjeto/BotaoDeletarProjeto";
+
 import BotoesStatus from "@/components/BotoesAtivoEsperaInativo/BotoesStatus";
 import ProjetosAtivos from "@/components/Projetos/ativos/ProjAtivos";
-import ModalAddTarefa from "@/components/Modal/AddTarefa/ModalAddTarefa";
 
 interface Iinativar {
   id_projeto: number;

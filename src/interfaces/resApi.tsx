@@ -1,5 +1,3 @@
-import { Interface } from "readline";
-
 //dados da api de projetos
 export interface IdadosApi {
   sucesso: boolean;

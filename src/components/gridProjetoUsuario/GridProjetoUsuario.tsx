@@ -3,7 +3,7 @@ import styles from "./GridProjetoUsuario.module.css";
 import { api } from "../../axios/baseUrl";
 import { useQuery } from "@tanstack/react-query";
 import { IrespostaApi } from "@/interfaces/resApi";
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, useEffect } from "react";
 
 interface IdadosProjeto extends IrespostaApi {
   dados: string | number;
@@ -12,7 +12,7 @@ interface IdadosProjeto extends IrespostaApi {
 const GridProjetoUsuario = () => {
   const navigate = useNavigate();
 
-  const [numeroFinal, setNumeroFinal] = useState(100);
+  const [numeroFinal] = useState(100);
   const [contador, setContador] = useState(0);
 
   useEffect(() => {
@@ -45,7 +45,6 @@ const GridProjetoUsuario = () => {
 
   if (isLoading) return <div>Carregando...</div>;
   if (error) return <div>{error.message}</div>;
-
 
   return (
     <div className={styles.container}>

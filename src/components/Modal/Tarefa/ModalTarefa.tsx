@@ -61,11 +61,7 @@ const ModalTarefa = ({ id_projeto }: Iprops) => {
     }
   };
 
-  const {
-    data: tarefaDetalhes,
-    error: erroDetalhesTarefa,
-    isLoading: loadingDetalhesTarefa,
-  } = useQuery<IdetalhesTarefa>({
+  const { data: tarefaDetalhes } = useQuery<IdetalhesTarefa>({
     queryKey: ["detalhesTarefa", id],
     queryFn: fetchDetalhesTarefa,
     refetchOnWindowFocus: false,

@@ -1,7 +1,4 @@
-import ModalAddProjeto from "@/components/Modal/ModalAddProjeto";
 import GridProjetoUsuario from "../../components/gridProjetoUsuario/GridProjetoUsuario";
-import styles from "./Home.module.css";
-import { useEffect, useState } from "react";
 
 const Home = () => {
   return (

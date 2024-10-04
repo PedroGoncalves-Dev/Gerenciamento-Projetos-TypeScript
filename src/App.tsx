@@ -43,7 +43,7 @@ function App() {
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/Gerenciamento-Projetos-TypeScript" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/projetos" element={<Projetos />} />
           <Route path="/detalhesProjeto" element={<DetalhesProjeto />} />
