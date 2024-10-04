@@ -27,6 +27,9 @@ function Layout({ children }: Ichidren) {
         style={{
           width: isLoginPage ? "100%" : "",
           height: isLoginPage ? "100vh" : "",
+          backgroundImage: isLoginPage ? 'url("/task.jpg")' : "",
+          backgroundSize: isLoginPage ? "cover" : "",
+          backgroundPosition: isLoginPage ? "center" : "",
         }}
       >
         {children}

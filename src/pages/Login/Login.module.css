@@ -1,25 +1,28 @@
 .formL {
-  width: 40%;
-  margin: 100px auto;
+  width: 35%;
+  position: relative;
+  top: 100px;
+  left: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 300px;
-  background-color: #eeeef8;
+  background-color: var(--cor-azulClarinho);
   border-radius: 8px;
-  box-shadow: 0px 8px 10px 2px #cccccc96;
+  box-shadow: 0px 8px 10px 2px #1f1f1f96;
 }
 
 .formL label {
   display: flex;
   flex-direction: column;
-  padding: 10px 0;
+  margin: 10px 0;
   width: 50%;
 }
 
 .formL label span {
   margin-bottom: 4px;
+  text-shadow: 2px 4px 5px #888787;
 }
 
 .formL label input {
@@ -29,11 +32,12 @@
   text-align: center;
   transition: 0.3s ease;
   outline: none;
+  background-color: #ffffffda;
 }
 
 .formL label input:focus {
   transform: scale(1.05);
-  box-shadow: 0px 5px 7px 2px #dbdbdb;
+  box-shadow: 0px 5px 7px 2px #444444;
 }
 .formL label input::placeholder {
   font-size: 0.95rem;
@@ -41,7 +45,7 @@
 }
 
 .formL button {
-  background-color: var(--cor-azulClarinho);
+  background-color: var(--cor-laranja);
   width: 25%;
   line-height: 2rem;
   margin-top: 1rem;
@@ -74,4 +78,12 @@
 
 .links a:hover {
   text-decoration: underline;
+}
+
+/* responsividade */
+@media (max-width: 850px) {
+  .formL {
+    width: 70%;
+    margin: 0 auto;
+  }
 }
