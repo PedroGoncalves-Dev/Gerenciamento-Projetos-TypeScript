@@ -34,6 +34,7 @@ const Login = () => {
         <input
           type="text"
           placeholder="Seu userName para poder acessar"
+          autoComplete="current-text"
           {...register("username_usu", { required: "Username obrigatorio" })}
         />
         {errors.username_usu && (
@@ -46,6 +47,7 @@ const Login = () => {
         <input
           type="password"
           placeholder="****"
+          autoComplete="current-password"
           {...register("senha_usu", { required: "Senha obrigatoria" })}
         />
         {errors.senha_usu && (
