@@ -1,10 +1,16 @@
 import styles from "./Login.module.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { api } from "@/axios/baseUrl";
+import { IrespostaApi } from "@/interfaces/resApi";
 
 interface IpropsSubmit {
   username_usu: string;
   senha_usu: string;
+}
+
+interface IreturnData extends IrespostaApi {
+  dados: IpropsSubmit[];
 }
 
 const Login = () => {
@@ -14,7 +20,13 @@ const Login = () => {
     formState: { errors },
   } = useForm<IpropsSubmit>();
 
-  const onSubmit = (data: IpropsSubmit) => {};
+  const onSubmit = async (data: IpropsSubmit) => {
+    const res = await api.post<IreturnData>("/login", data);
+
+    if (res.data.sucesso) {
+      console.log("loginsucesso");
+    }
+  };
   return (
     <form className={styles.formL} onSubmit={handleSubmit(onSubmit)}>
       <label>
@@ -24,7 +36,9 @@ const Login = () => {
           placeholder="Seu userName para poder acessar"
           {...register("username_usu", { required: "Username obrigatorio" })}
         />
-        {errors.username_usu && <p>{errors.senha_usu?.message}</p>}
+        {errors.username_usu && (
+          <p style={{ color: "#a93545" }}>{errors.username_usu.message}</p>
+        )}
       </label>
 
       <label>
@@ -34,7 +48,9 @@ const Login = () => {
           placeholder="****"
           {...register("senha_usu", { required: "Senha obrigatoria" })}
         />
-        {errors.senha_usu && <p>{errors.senha_usu.message}</p>}
+        {errors.senha_usu && (
+          <p style={{ color: "#a93545" }}>{errors.senha_usu.message}</p>
+        )}
       </label>
 
       <button type="submit">Login</button>
